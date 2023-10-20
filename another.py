@@ -57,4 +57,8 @@ else:
     day_of_week_russian = days_of_week_russian[day_of_week]
 
     # Print the result
-    st.success(f"Номер дня недели для {day}-го дня года в {year} году: {day_of_week_russian}")
+    if month:
+        text_month = f"{month} месяце"
+    else:
+        text_month = ""
+    st.success(f"Номер дня недели для {day}-го дня года {text_month} в {year} году: {day_of_week_russian}")
