@@ -5,7 +5,7 @@ import datetime
 def get_date_day_month_year():
     day = st.number_input("Введите день:", min_value=1, max_value=31)
     month = st.number_input("Введите месяц:", min_value=1, max_value=12)
-    year = st.number_input("Введите год:")
+    year = st.number_input("Введите год:", min_value=1, max_value=3000)
     return day, month, year
 
 # Function to get the date as day (~365)-year
