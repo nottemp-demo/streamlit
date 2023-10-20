@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import emoji
 
+@st.cache
 def is_knight_move_possible(x1, y1, x2, y2):
     dx = abs(x2 - x1)
     dy = abs(y2 - y1)
