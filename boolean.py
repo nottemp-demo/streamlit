@@ -1,6 +1,5 @@
 import streamlit as st
 import numpy as np
-import matplotlib.pyplot as plt
 
 def is_knight_move_possible(x1, y1, x2, y2):
     dx = abs(x2 - x1)
@@ -9,7 +8,7 @@ def is_knight_move_possible(x1, y1, x2, y2):
 
 def main():
     st.title("Проверка хода коня")
-    canvas = np.zeros((8, 8))
+    chessboard = np.full((8, 8), "_", dtype=str)
 
     x1, y1 = st.columns(2)
     with x1:
@@ -33,18 +32,12 @@ def main():
         else:
             st.error("Конь не может перейти с ({}, {}) на ({}, {}) за один ход".format(x1_coord, y1_coord, x2_coord, y2_coord))
 
-    # Plotting the chessboard with knight and target cell
-    fig, ax = plt.subplots()
-    ax.imshow(canvas, cmap='binary')
-    ax.scatter(x1_coord-1, y1_coord-1, color='red', marker='s', s=100, label='Knight')
-    ax.scatter(x2_coord-1, y2_coord-1, color='blue', marker='s', s=100, label='Target')
-    ax.set_xticks(np.arange(8))
-    ax.set_yticks(np.arange(8))
-    ax.set_xticklabels(np.arange(1, 9))
-    ax.set_yticklabels(np.arange(1, 9))
-    ax.grid(color='black', linewidth=1)
-    ax.legend(loc='upper right')
-    st.pyplot(fig)
+    # Update the chessboard matrix with knight and target cell
+    chessboard[y1_coord-1, x1_coord-1] = "K"
+    chessboard[y2_coord-1, x2_coord-1] = "O"
+
+    # Display the chessboard
+    st.write(chessboard)
 
 if __name__ == "__main__":
     main()
