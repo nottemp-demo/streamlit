@@ -16,7 +16,7 @@ def get_date_day_year():
 
 # Streamlit app
 st.title("Определение номера дня недели")
-st.write("Дни недели пронумерованы следующим образом: 1 — понедельник, 2 — вторник, ..., 6 — суббота, 7 — воскресенье.")
+st.write("Дни недели: 1 — понедельник, 2 — вторник, ..., 6 — суббота, 7 — воскресенье.")
 
 # Get user input for the date format
 option = st.radio("Выберите формат ввода даты:", ["День-месяц-год", "День (~365)-год"])
@@ -24,6 +24,7 @@ option = st.radio("Выберите формат ввода даты:", ["Ден
 # Check the chosen option and get the date accordingly
 if option == "День-месяц-год":
     day, month, year = get_date_day_month_year()
+    st.write("Месецы от 1 до 12: 1 — январь, и тд.")
 elif option == "День (~365)-год":
     day, year = get_date_day_year()
 
