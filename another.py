@@ -11,7 +11,7 @@ def get_date_day_month_year():
 # Function to get the date as day (~365)-year
 def get_date_day_year():
     day = st.number_input("Введите число K (от 1 до 365):", min_value=1, max_value=365)
-    year = st.number_input("Введите год:")
+    year = st.number_input("Введите год:", min_value=1, max_value=365)
     return day, year
 
 # Streamlit app
