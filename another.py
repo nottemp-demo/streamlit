@@ -15,7 +15,7 @@ def get_date_day_year():
     return day, year
 
 # Streamlit app
-st.title("Определение номера дня недели")
+st.title("Определение дня недели")
 st.write("Дни недели: 1 — понедельник, 2 — вторник, ..., 6 — суббота, 7 — воскресенье.")
 
 # Get user input for the date format
