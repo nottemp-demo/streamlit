@@ -1,5 +1,6 @@
 import streamlit as st
 import numpy as np
+import emoji
 
 def is_knight_move_possible(x1, y1, x2, y2):
     dx = abs(x2 - x1)
@@ -8,7 +9,7 @@ def is_knight_move_possible(x1, y1, x2, y2):
 
 def main():
     st.title("Проверка хода коня")
-    chessboard = np.full((8, 8), "_", dtype=str)
+    chessboard = np.full((8, 8), "⬜", dtype=str)
 
     x1, y1 = st.columns(2)
     with x1:
@@ -33,11 +34,12 @@ def main():
             st.error("Конь не может перейти с ({}, {}) на ({}, {}) за один ход".format(x1_coord, y1_coord, x2_coord, y2_coord))
 
     # Update the chessboard matrix with knight and target cell
-    chessboard[y1_coord-1, x1_coord-1] = "K"
-    chessboard[y2_coord-1, x2_coord-1] = "O"
+    chessboard[y1_coord-1, x1_coord-1] = "🐴"
+    chessboard[y2_coord-1, x2_coord-1] = "🎯"
 
     # Display the chessboard
-    st.write(chessboard)
+    for row in chessboard:
+        st.write(" ".join(row))
 
 if __name__ == "__main__":
     main()
