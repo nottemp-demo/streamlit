@@ -1,5 +1,4 @@
 import streamlit as st
-import numpy as np
 
 def is_knight_move_possible(x1, y1, x2, y2):
     dx = abs(x2 - x1)
@@ -8,36 +7,16 @@ def is_knight_move_possible(x1, y1, x2, y2):
 
 def main():
     st.title("Проверка хода коня")
-    chessboard = np.full((8, 8), "_", dtype=str)
-
-    x1, y1 = st.columns(2)
-    with x1:
-        st.write("Выберите координату x1:")
-        x1_coord = st.slider("", min_value=1, max_value=8, value=1)
-    with y1:
-        st.write("Выберите координату y1:")
-        y1_coord = st.slider("", min_value=1, max_value=8, value=1)
-
-    x2, y2 = st.columns(2)
-    with x2:
-        st.write("Выберите координату x2:")
-        x2_coord = st.slider("", min_value=1, max_value=8, value=2)
-    with y2:
-        st.write("Выберите координату y2:")
-        y2_coord = st.slider("", min_value=1, max_value=8, value=3)
+    x1 = st.slider("Введите координату x1 (1-8)", min_value=1, max_value=8, value=1)
+    y1 = st.slider("Введите координату y1 (1-8)", min_value=1, max_value=8, value=1)
+    x2 = st.slider("Введите координату x2 (1-8)", min_value=1, max_value=8, value=2)
+    y2 = st.slider("Введите координату y2 (1-8)", min_value=1, max_value=8, value=3)
 
     if st.button("Проверить"):
-        if is_knight_move_possible(x1_coord, y1_coord, x2_coord, y2_coord):
-            st.success("Конь может перейти с ({}, {}) на ({}, {}) за один ход".format(x1_coord, y1_coord, x2_coord, y2_coord))
+        if is_knight_move_possible(x1, y1, x2, y2):
+            st.success("Конь может перейти с ({}, {}) на ({}, {}) за один ход".format(x1, y1, x2, y2))
         else:
-            st.error("Конь не может перейти с ({}, {}) на ({}, {}) за один ход".format(x1_coord, y1_coord, x2_coord, y2_coord))
-
-    # Update the chessboard matrix with knight and target cell
-    chessboard[y1_coord-1, x1_coord-1] = "K"
-    chessboard[y2_coord-1, x2_coord-1] = "O"
-
-    # Display the chessboard
-    st.write(chessboard)
+            st.error("Конь не может перейти с ({}, {}) на ({}, {}) за один ход".format(x1, y1, x2, y2))
 
 if __name__ == "__main__":
     main()
